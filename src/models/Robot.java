@@ -22,6 +22,9 @@ import visualization.GraphicalComponent;
 public class Robot implements GraphicalComponent {
 	/** log*/
 	MyLog mlog = new MyLog("Robot", true);
+	/** write experiment's data to output folder or not*/
+	boolean save = false;
+	
 	//graphics
 	/**graphics displaying object*/
 	Display display;
@@ -66,12 +69,14 @@ public class Robot implements GraphicalComponent {
 	int iter = 0;
 	
 	/**
-	 * 
+	 * Builds a robot
 	 * @param folderName name of data folder
 	 * @param d draw the bot or not
+	 * @param save write experiment's data to output file or not
 	 */
-	public Robot(String folderName, boolean d){
+	public Robot(String folderName, boolean d, boolean save){
 		draw = d;
+		this.save = save;
 		
 		if(draw){
 			display = new Display();
@@ -93,14 +98,16 @@ public class Robot implements GraphicalComponent {
 		mlog.say("distance left "+distSensors[0].getValue());
 		mlog.say("distance right "+distSensors[1].getValue());
 		
-		String str;
-    	try {
-			trackerWriter = new FileWriter(folderName+"/robotTrack.csv");
-			str = "iteration, x, y, frontAngle\n";
-			trackerWriter.append(str);
-			trackerWriter.flush();
-		} catch (IOException e) {
-			e.printStackTrace();
+		if(save){		
+			String str;
+	    	try {
+				trackerWriter = new FileWriter(folderName+"/robotTrack.csv");
+				str = "iteration, x, y, frontAngle\n";
+				trackerWriter.append(str);
+				trackerWriter.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -115,7 +122,9 @@ public class Robot implements GraphicalComponent {
 		coordinates[1]+=f.get(1, 0);
 		//check limit conditions
 		cropToLimits(coordinates, robot_size/2);
-		writeInfo();
+		if(save){
+			writeInfo();
+		}
 		iter++;
 	}
 	

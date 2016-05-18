@@ -7,9 +7,9 @@ import demos.AlienHunt;
 import demos.WallAvoidance;
 
 /**
- * @author lana
  * This class is the main class.
  * Test svn relocate. 2015/10/14 17:47
+ * @author lana
  */
 public class Starter {
 

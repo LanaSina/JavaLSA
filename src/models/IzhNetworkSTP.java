@@ -13,9 +13,19 @@ import startup.Constants;
 import visualization.NetworkGraph;
 import communication.MyLog;
 
+/**
+ * a network with Short Term Plasticity to reduce bursting behavior
+ * during learning phase 
+ * 
+ * @author lana
+ *
+ */
 public class IzhNetworkSTP {	
 	/** log */
 	MyLog mlog = new MyLog("IzhNetwork", true);
+	/** write experiment's data to output folder or not*/
+	boolean save = false;
+	
 	/** visualization*/
 	NetworkGraph netGraph;
 	/** draw graphics or not*/
@@ -135,8 +145,10 @@ public class IzhNetworkSTP {
 	    }
 		    
 	    initNetwork();
-		initDataFiles();
-		writeWeights();		
+	    if(save){
+			initDataFiles();
+			writeWeights();		
+	    }
 	}
 	
 	/**
@@ -273,13 +285,15 @@ public class IzhNetworkSTP {
 			//check on clusters
 			n = i/10;
 	        if(neurons[i].isFiring()) {
-	        	String str = i+","+iteration+"\n";
-	        	try {
-	        		spikesWriter.append(str);	        	
-					spikesWriter.flush();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+	        	if(save){
+		        	String str = i+","+iteration+"\n";
+		        	try {
+		        		spikesWriter.append(str);	        	
+						spikesWriter.flush();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+	        	}
 				clusFired[n]++;
 	        } 
 	    }
@@ -312,8 +326,10 @@ public class IzhNetworkSTP {
 	    }
 	    
 		iteration++;
-	    if((iteration%10000) == 0){	    	
-			writeWeights();
+	    if((iteration%10000) == 0){	   
+	    	if(save){
+				writeWeights();
+	    	}
 			try {
 				Thread.sleep(5);
 			} catch (InterruptedException e) {
@@ -413,12 +429,14 @@ public class IzhNetworkSTP {
 		
 	
 	public void closeStreams(){
-		mlog.say("closing streams");
-		try {
-			spikesWriter.flush();
-			spikesWriter.close();		
-		} catch (IOException e) {
-			e.printStackTrace();
+		if(save){
+			mlog.say("closing streams");
+			try {
+				spikesWriter.flush();
+				spikesWriter.close();		
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

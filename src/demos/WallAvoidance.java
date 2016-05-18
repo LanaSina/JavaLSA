@@ -18,6 +18,8 @@ import visualization.Display;
 public class WallAvoidance {
 	/** log*/
 	MyLog mlog = new MyLog("wallDemo", true);
+	/** write experiment's data to output folder or not*/
+	boolean save = false;
 	
 	IzhNetworkSTP net;
 	String name = "";
@@ -95,33 +97,35 @@ public class WallAvoidance {
 		}		
 
 		String folderName = net.getDataFolder();
-		robot = new Robot(folderName, drawBot);
+		robot = new Robot(folderName, drawBot, save);
 					
 		//now create csv files
-		try {					
-			String str;
-        	inputWriter = new FileWriter(folderName+"/"+Constants.InputValueFileName);
-			str = "inputLeft, inputRight, iteration\n";
-			inputWriter.append(str);
-			inputWriter.flush();
-			
-			outputWriter = new FileWriter(folderName+"/output.csv");
-			str = "outputLeft, outputRight, iteration\n";
-			outputWriter.append(str);
-			outputWriter.flush();
-			
-			leftTimeWriter = new FileWriter(folderName+"/leftSensorReacTime.csv");
-			str = "startTime, stopTime\n";
-			leftTimeWriter.append(str);
-			leftTimeWriter.flush();
-			
-			rightTimeWriter = new FileWriter(folderName+"/rightSensorReacTime.csv");
-			str = "startTime, stopTimen";
-			rightTimeWriter.append(str);
-			rightTimeWriter.flush();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}		
+		if(save){
+			try {					
+				String str;
+	        	inputWriter = new FileWriter(folderName+"/"+Constants.InputValueFileName);
+				str = "inputLeft, inputRight, iteration\n";
+				inputWriter.append(str);
+				inputWriter.flush();
+				
+				outputWriter = new FileWriter(folderName+"/output.csv");
+				str = "outputLeft, outputRight, iteration\n";
+				outputWriter.append(str);
+				outputWriter.flush();
+				
+				leftTimeWriter = new FileWriter(folderName+"/leftSensorReacTime.csv");
+				str = "startTime, stopTime\n";
+				leftTimeWriter.append(str);
+				leftTimeWriter.flush();
+				
+				rightTimeWriter = new FileWriter(folderName+"/rightSensorReacTime.csv");
+				str = "startTime, stopTimen";
+				rightTimeWriter.append(str);
+				rightTimeWriter.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}		
+		}
 	}
 	
 	
@@ -165,15 +169,16 @@ public class WallAvoidance {
 			}
 		}else{
 			if(leftStuck){//got unstuck
-				leftStuck = false;
-				//str = "startTime, stopTime\n";
-				String str = leftStarted + "," + iter  + "\n";
-				try {
-		    		leftTimeWriter.append(str);	        	
-		    		leftTimeWriter.flush();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}				
+				leftStuck = false;			
+				if(save){
+					String str = leftStarted + "," + iter  + "\n";
+					try {
+			    		leftTimeWriter.append(str);	        	
+			    		leftTimeWriter.flush();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}	
+				}
 			}
 		}
 		//right
@@ -187,14 +192,18 @@ public class WallAvoidance {
 		}else{
 			if(rightStuck){//got unstuck
 				rightStuck = false;
-				//str = "startTime, stopTime\n";
-				String str = rightStuck + "," + iter + "\n";
-				try {
-		    		rightTimeWriter.append(str);	        	
-		    		rightTimeWriter.flush();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}			
+				
+				if(save){
+					//str = "startTime, stopTime\n";
+					String str = rightStuck + "," + iter + "\n";
+					try {
+			    		rightTimeWriter.append(str);	        	
+			    		rightTimeWriter.flush();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}		
+				}
+					
 			}
 		}
 		
@@ -219,19 +228,22 @@ public class WallAvoidance {
 		robot.turn(angle);	
 		
 		//write other info
-		//"inputLeft, inputRight, iteration\n";
-		String str1 = stimL + "," + stimR + "," + iter + "\n";
-		//"outputLeft, outputRight, iteration\n";
-		String str2 = clusFired[cleft] + "," + clusFired[cright] + "," + iter + "\n";
-		try {
-    		inputWriter.append(str1);	        	
-    		inputWriter.flush();
-    		
-    		outputWriter.append(str2);	        	
-    		outputWriter.flush();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}	
+		if(save){
+			//"inputLeft, inputRight, iteration\n";
+			String str1 = stimL + "," + stimR + "," + iter + "\n";
+			//"outputLeft, outputRight, iteration\n";
+			String str2 = clusFired[cleft] + "," + clusFired[cright] + "," + iter + "\n";
+			try {
+	    		inputWriter.append(str1);	        	
+	    		inputWriter.flush();
+	    		
+	    		outputWriter.append(str2);	        	
+	    		outputWriter.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}	
+		}
+		
 		
 	}
 
@@ -295,7 +307,9 @@ public class WallAvoidance {
 					e.printStackTrace();
 				}			
 			}
-			closeStreams();
+			if(save){
+				closeStreams();
+			}
 		}
 	}
 
