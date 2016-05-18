@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/lana/Desktop/prgm/JUNG/collections-generic-4.01.jar"/>
+	<classpathentry kind="lib" path="/Users/lana/Desktop/prgm/JUNG/colt-1.2.0.jar"/>
+	<classpathentry kind="lib" path="/Users/lana/Desktop/prgm/JUNG/concurrent-1.3.4.jar"/>
+	<classpathentry kind="lib" path="/Users/lana/Desktop/prgm/JUNG/j3d-core-1.3.1.jar"/>
+	<classpathentry kind="lib" path="/Users/lana/Desktop/prgm/JUNG/jung-3d-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/lana/Desktop/prgm/JUNG/jung-3d-demos-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/lana/Desktop/prgm/JUNG/jung-algorithms-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/lana/Desktop/prgm/JUNG/jung-api-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/lana/Desktop/prgm/JUNG/jung-graph-impl-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/lana/Desktop/prgm/JUNG/jung-io-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/lana/Desktop/prgm/JUNG/jung-jai-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/lana/Desktop/prgm/JUNG/jung-jai-samples-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/lana/Desktop/prgm/JUNG/jung-samples-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/lana/Desktop/prgm/JUNG/jung-visualization-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/lana/Desktop/prgm/JUNG/stax-api-1.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/lana/Desktop/prgm/JUNG/vecmath-1.3.1.jar"/>
+	<classpathentry kind="lib" path="/Users/lana/Desktop/prgm/JUNG/wstx-asl-3.2.6.jar"/>
+	<classpathentry kind="lib" path="/Users/lana/Desktop/prgm/Jama-1.0.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
