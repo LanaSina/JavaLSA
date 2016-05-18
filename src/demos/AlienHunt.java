@@ -14,6 +14,12 @@ import visualization.Display;
 import visualization.GraphicalComponent;
 import communication.MyLog;
 
+/**
+ * A spaceship learns to shoot aliens.
+ * 
+ * @author lana
+ *
+ */
 public class AlienHunt implements GraphicalComponent {
 	/** log*/
 	MyLog mlog = new MyLog("hunt", true);

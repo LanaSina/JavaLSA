@@ -86,7 +86,7 @@ public class IzhNetwork2 {
 	
 	/**
 	 * 
-	 * @param name
+	 * @param name name for logging
 	 * @param draw set true if graphics are necessary (slow)
 	 */
 	public IzhNetwork2(String name, boolean draw){

@@ -13,6 +13,12 @@ import models.IzhNeuron;
 import startup.Constants;
 import communication.MyLog;
 
+/**
+ * Experiments on chains on 2 or 3 neurons.
+ * 
+ * @author lana
+ *
+ */
 public class Chain {
 
 	/** log */

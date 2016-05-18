@@ -46,7 +46,12 @@ public class NetworkGraph {
     double minWeight = 4;
    static NeuronVertex[] vertices;
     
-    /** Creates a new instance of NeuronGraph */
+
+   /**
+    * Creates a new instance of NeuronGraph 
+    * @param size number of neurons
+    * @param weights weights of the network [from][to]
+    */
     public NetworkGraph(int size, double[][] weights) {
     	n = size;
     	vertices = new NeuronVertex[n];

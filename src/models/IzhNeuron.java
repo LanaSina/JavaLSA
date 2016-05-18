@@ -6,6 +6,7 @@ package models;
 import startup.Constants;
 
 /**
+ * A neuron built according to the Izhikevich model.
  * @author lana
  *
  */

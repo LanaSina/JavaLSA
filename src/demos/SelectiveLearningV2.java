@@ -9,6 +9,11 @@ import visualization.Display;
 
 import communication.MyLog;
 
+/**
+ * 
+ * @author lana
+ *
+ */
 public class SelectiveLearningV2 {
 
 

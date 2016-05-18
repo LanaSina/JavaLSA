@@ -108,7 +108,7 @@ public class BigMemoryNet {
 	
 	/**
 	 * 
-	 * @param name
+	 * @param name name for logging
 	 * @param draw set true if graphics are necessary (slow)
 	 */
 	public BigMemoryNet(String name, boolean draw){
@@ -590,7 +590,7 @@ public class BigMemoryNet {
 	 * @param w the weight before plasticity
 	 * @param ref_w the reference weight w_{ij}
 	 * @param z_m z^{minus}_{i}
-	 * @param s S_i
+	 * @param si S_i
 	 * @return the weight modification dw/dt
 	 */
 	public double HSP(double w, double ref_w, double z_m, double si){

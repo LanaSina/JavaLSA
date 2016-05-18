@@ -47,6 +47,7 @@ public class Display extends JFrame {
 		 * set custom window size
 		 * @param w width
 		 * @param h height
+		 * @param b visible or not
 		 */
 		public Display(int w, int h, boolean b) {
 			selfRepaint = b;

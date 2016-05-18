@@ -11,9 +11,9 @@ import communication.MyLog;
 import models.IzhNeuron;
 import startup.Constants;
 
+/** to apply Euler forward method on equations and record it in csv*/
 public class FunctionRecorder {
 
-	/** to apply Euler forward method on equations and record it in csv*/
 	public static void main(String[] args) {
 		MyLog mlog = new MyLog("functionRecorder", true);
 		String folderName;

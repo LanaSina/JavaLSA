@@ -83,7 +83,7 @@ public class IzhNetworkSTP {
 	}
 	
 	/**
-	 * @param name
+	 * @param name name for logging
 	 * @param draw set true if graphics are necessary (slow)
 	 */
 	public IzhNetworkSTP(String name, boolean draw){

@@ -13,6 +13,12 @@ import startup.Constants;
 import visualization.Display;
 import visualization.GraphicalComponent;
 
+/**
+ * A small wheeled robot with distance sensors.
+ * 
+ * @author lana
+ *
+ */
 public class Robot implements GraphicalComponent {
 	/** log*/
 	MyLog mlog = new MyLog("Robot", true);
@@ -113,6 +119,9 @@ public class Robot implements GraphicalComponent {
 		iter++;
 	}
 	
+	/**
+	 * write data in output file.
+	 */
 	private void writeInfo(){
 		//str = "x, y, frontAngle\n";
 		String str = iter + "," + coordinates[0] + "," + coordinates[1] + "," + Math.toDegrees(r_angle) + "\n";
@@ -137,7 +146,7 @@ public class Robot implements GraphicalComponent {
 	
 	/**
 	 * makes the angle go back to 0, 2pi
-	 * @param r_angle2
+	 * @param a
 	 * @return
 	 */
 	private double cropAngleToLimits(double a) {
@@ -168,6 +177,11 @@ public class Robot implements GraphicalComponent {
 		return r;
 	}
 
+	/**
+	 * the robot's sensor to detect walls,
+	 * @author lana
+	 *
+	 */
 	private class DistanceSensor{
 		/** angle from front (rad)*/
 		double angle = 0;
@@ -266,6 +280,7 @@ public class Robot implements GraphicalComponent {
 	/** transforms regular x y system into weird JPanel system
 	 * regular: x left right, y bottom up
 	 * JPanel: x left right, y top down -> non regular, screws up all rotations.
+	 * @param c 2D coordinates 
 	 * @return
 	 */
 	private int[] toPanelCoordinates(double[] c){

@@ -18,9 +18,9 @@ import visualization.NetworkGraph;
 import communication.MyLog;
 
 /**
+ * Experiment with 100 neurons to demonstrate simple LSA.
  * @author lana
- *	Experiment with 100 neurons to demonstrate simple LSA.
- */
+ * */
 public class SimpleExperiment {
 	/** log */
 	MyLog mlog = new MyLog("simpleExp", true);

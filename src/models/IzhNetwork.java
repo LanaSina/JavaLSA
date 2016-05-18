@@ -13,6 +13,11 @@ import startup.Constants;
 import visualization.NetworkGraph;
 import communication.MyLog;
 
+/**
+ * A net of Izhikevich neurons.
+ * @author lana
+ *
+ */
 public class IzhNetwork {	
 	/** log */
 	MyLog mlog = new MyLog("IzhNetwork", true);
@@ -82,7 +87,7 @@ public class IzhNetwork {
 
 	
 	/**
-	 * @param name
+	 * @param name name for logging
 	 * @param draw set true if graphics are necessary (slow)
 	 */
 	public IzhNetwork(String name, boolean draw){

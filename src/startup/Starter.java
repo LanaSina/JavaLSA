@@ -20,11 +20,8 @@ public class Starter {
 
 		//Chain demo = new Chain();
 		//AlienHunt hunt = new AlienHunt();
-		//ExplicitPruning prune = new ExplicitPruning();
-		////TODO shutdown thread never called?
-		/*Thread shutdownThread = new Thread(new ShutdownThread(hunt));
-		Runtime.getRuntime().addShutdownHook(shutdownThread);*/
-		
+
+		//parameter search
 		//some parameters (connectance and variance of weights)
 		
 //		double variance = 2;
@@ -97,6 +94,7 @@ public class Starter {
 	    	//NeuralAssembly n = new NeuralAssembly();
 	    	//new BigMemory("");
 	    	//new Chain(""+id);
+	    	
 	    	new WallAvoidance("");//+id
 	    	
 	    	/*SimpleExperiment2 s = new SimpleExperiment2(""+id);

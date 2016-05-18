@@ -10,6 +10,11 @@ import models.Robot;
 import startup.Constants;
 import visualization.Display;
 
+/**
+ * An experiemnt where a robot learns to avoid walls.
+ * @author lana
+ *
+ */
 public class WallAvoidance {
 	/** log*/
 	MyLog mlog = new MyLog("wallDemo", true);
@@ -67,12 +72,19 @@ public class WallAvoidance {
 	NetworkRunnable netThread;
 	
 	
+	/**
+	 * Builds the demo
+	 * @param n name used for logging.
+	 */
 	public WallAvoidance(String n){
 		name = n;
 		init();
 		run();	
 	}
 	
+	/**
+	 * initialization of all variables.
+	 */
 	private void init(){
 	
 		if((name.compareTo("")==0)){
@@ -143,7 +155,7 @@ public class WallAvoidance {
 		
 		double stimL = 0;
 		double stimR = 0; 
-		//left
+		//stimulate network: left
 		if(d[0]>0){
 			stimL = max_stim_value/(d[0]-24);
 			net.stimulate(input_start,input_size,stimL);		
@@ -223,7 +235,10 @@ public class WallAvoidance {
 		
 	}
 
-	
+
+	/**
+	 * close output files.
+	 */
 	void closeStreams(){
 		mlog.say("closing streams");
 		try {
@@ -249,6 +264,11 @@ public class WallAvoidance {
 		new Thread(netThread).run();
 	}
 	
+	/**
+	 * main thread that runs the demo.
+	 * @author lana
+	 *
+	 */
 	private class NetworkRunnable implements Runnable{
 		boolean run = true;
 		MyLog mlog = new MyLog("networkRunnable",true);
@@ -280,6 +300,9 @@ public class WallAvoidance {
 	}
 
 
+	/**
+	 * kill this thread
+	 */
 	public void globalKill() {
 		mlog.say("kill");
 		netThread.kill();
