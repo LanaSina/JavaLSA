@@ -4,6 +4,7 @@
 package startup;
 
 import demos.AlienHunt;
+import demos.OneNeuronDynamics;
 import demos.WallAvoidance;
 
 /**
@@ -18,10 +19,13 @@ public class Starter {
 	 */
 	public static void main(String[] args) {
 
+		/* demo for chain of 2 or 3 neurons*/
 		//Chain demo = new Chain();
+		
+		/* demo for alien destroyer game*/
 		//AlienHunt hunt = new AlienHunt();
 
-		//parameter search
+		/* parameter search*/
 		//some parameters (connectance and variance of weights)
 		
 //		double variance = 2;
@@ -36,6 +40,9 @@ public class Starter {
 //			}
 //		}
 		
+		
+		/* wall avoidance and other demos */
+		
 //		String folder = "testFolder";
 		int i = 0;
 //		//for(int i=0;i<20;i++){
@@ -44,6 +51,10 @@ public class Starter {
 //			t.setFolder(folder);			
 			new Thread(t).start();
 //		//}
+		
+		//record the membrane potential of one neuron
+/*		OneNeuronDynamics n = new OneNeuronDynamics();
+		n.run();*/
 			
 	}
 
@@ -62,7 +73,7 @@ public class Starter {
 		
 	}
 	
-	/**there is already a thread in simpleExperiment class but whatever*/
+	/**there is already a thread in simpleExperiment class but this is an alternative*/
 	public static class ExperimentThread implements Runnable {
 
 		int id;

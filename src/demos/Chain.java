@@ -79,9 +79,9 @@ public class Chain {
 		
 		if((name.compareTo("")==0)){
 			//get current date
-	    DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd_HH_mm");
-	    Date date = new Date();
-	    String strDate = dateFormat.format(date);
+		    DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd_HH_mm");
+		    Date date = new Date();
+		    String strDate = dateFormat.format(date);
 	    	folderName = Constants.DataPath + "\\" + strDate + "\\";
 	    }else{
 	    	mlog.setName("chain"+name);

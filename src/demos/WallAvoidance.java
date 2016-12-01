@@ -129,6 +129,9 @@ public class WallAvoidance {
 	}
 	
 	
+	/**
+	 * delay between 2 stimulations, random number
+	 */
 	int stimDelay = 30;
 	/**
 	 * update the sensory info, neurons and actions

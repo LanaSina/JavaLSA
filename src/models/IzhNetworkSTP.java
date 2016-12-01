@@ -398,34 +398,34 @@ public class IzhNetworkSTP {
 	
 	
 	//STP according to Science paper "Synaptic Theory of Working Memory-support"
-		/**
-		 * returns weight factor
-		 * @param j
-		 * @param fired 1 if this neuron is firing, 0 otherwise
-		 * @return
-		 */
-		double sciSTP(int j, int fired){//nat????
-			double wf = 0;
-			
-			double s = fired;
-			double u = sci_u[j];
-			double x = sci_x[j];
-			
-			double tau_d = 200;//ms
-			double tau_f = 600;//ms
-			double U = 0.2;//mV
-			
-			double dx = (1-x)/tau_d - u*x*s;
-			double du = (U - u)/tau_f + U*(1-u)*s;
-			
-			double nu = u+du;
-			double nx = x+dx;
-			
-			wf = nu*nx;
-			sci_u[j] = nu;
-			sci_x[j] = nx;
-			return wf;
-		}
+	/**
+	 * returns weight factor
+	 * @param j
+	 * @param fired 1 if this neuron is firing, 0 otherwise
+	 * @return
+	 */
+	double sciSTP(int j, int fired){//nat????
+		double wf = 0;
+		
+		double s = fired;
+		double u = sci_u[j];
+		double x = sci_x[j];
+		
+		double tau_d = 200;//ms
+		double tau_f = 600;//ms
+		double U = 0.2;//mV
+		
+		double dx = (1-x)/tau_d - u*x*s;
+		double du = (U - u)/tau_f + U*(1-u)*s;
+		
+		double nu = u+du;
+		double nx = x+dx;
+		
+		wf = nu*nx;
+		sci_u[j] = nu;
+		sci_x[j] = nx;
+		return wf;
+	}
 		
 	
 	public void closeStreams(){
