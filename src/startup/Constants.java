@@ -34,7 +34,7 @@ public class Constants {
 	/** STDP delay window (ms)*/
 	public static int tau = 20;
 	/** folder where data file will be recorded*/
-	public static String DataPath = "/Users/lana/Development/JAVANN";//
+	public static String DataPath = "/../../data/JAVANN";
 	/** path to sound files*/
 	public static String SoundPath = "/sound/piano";
 	//filename

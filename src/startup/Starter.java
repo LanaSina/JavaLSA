@@ -26,25 +26,25 @@ public class Starter {
 		//AlienHunt hunt = new AlienHunt();
 
 		/* parameter search*/
-		//some parameters (connectance and variance of weights)
+		//(explore connectance and variance of weights)	
+		/*double variance = 2;
+		for(int connections = 30; connections<51; connections=connections+1){//150
+			String folder = "parameterSearch/detailed/var"+variance+"connections"+connections;
+			for(int i=0;i<10;i++){
+				ExperimentThread t = new ExperimentThread(i);
+				t.setFolder(folder);	
+				t.setWVar(variance);
+				t.setConnections(connections);
+				new Thread(t).start();
+			}
+		}*/
 		
-//		double variance = 2;
-//		for(int connections = 30; connections<51; connections=connections+1){//150
-//			String folder = "parameterSearch/detailed/var"+variance+"connections"+connections;
-//			for(int i=0;i<10;i++){
-//				ExperimentThread t = new ExperimentThread(i);
-//				t.setFolder(folder);	
-//				t.setWVar(variance);
-//				t.setConnections(connections);
-//				new Thread(t).start();
-//			}
-//		}
 		
-		
-		/* wall avoidance and other demos */
-		
+		/* wall avoidance and other demos are run in this thread*/	
+		//separate folder can be set to save data for entire batches of experiments
 //		String folder = "testFolder";
 		int i = 0;
+		//uncomment this loop to run batches of experiments instead of just one experiment
 //		//for(int i=0;i<20;i++){
 		
 			ExperimentThread t = new ExperimentThread(i);
@@ -52,8 +52,8 @@ public class Starter {
 			new Thread(t).start();
 //		//}
 		
-		//record the membrane potential of one neuron
-/*		OneNeuronDynamics n = new OneNeuronDynamics();
+		//Demo for recording the membrane potential of one neuron
+		/*OneNeuronDynamics n = new OneNeuronDynamics();
 		n.run();*/
 			
 	}
@@ -61,9 +61,7 @@ public class Starter {
 	public static class ShutdownThread implements Runnable {
 
 		AlienHunt hunt;
-		
-		//TODO use interface
-		public ShutdownThread(AlienHunt h){
+			public ShutdownThread(AlienHunt h){
 			hunt = h;
 		}
 		
@@ -98,7 +96,8 @@ public class Starter {
 		}
 		
 	    public void run() {
-	    	///new AlienHunt("AlienHunt"+id);
+	    	//uncomment any of the following demos
+	    	//new AlienHunt("AlienHunt"+id);
 	    	//new ExplicitPruning2(""+id);
 	    	//new SimpleMemory("");
 	    	//IzhMemoryNet n = new IzhMemoryNet(false);
@@ -107,6 +106,8 @@ public class Starter {
 	    	//new Chain(""+id);
 	    	
 	    	new WallAvoidance("");//+id
+	    	//use this line if runing experiments by batches
+	    	//new WallAvoidance(""+id);
 	    	
 	    	/*SimpleExperiment2 s = new SimpleExperiment2(""+id);
 	    	s.setSupFolder(folder);
@@ -114,8 +115,6 @@ public class Starter {
 	    	s.setConnections(connections);
 	    	s.makeNet();
 	    	s.launch();*/
-
 	    }
-
 	}
 }
